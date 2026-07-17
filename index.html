@@ -28,24 +28,28 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f4f5f8;color:var(--text);min-height:100vh;padding-bottom:calc(var(--tab-h) + env(safe-area-inset-bottom));-webkit-font-smoothing:antialiased;overscroll-behavior-y:contain}
 
-.header{background:linear-gradient(135deg,#0fa878 0%,#0d9e8f 55%,#3d7ef5 130%);color:#fff;padding:calc(12px + env(safe-area-inset-top)) 20px 12px;position:sticky;top:0;z-index:100;border-radius:0 0 22px 22px;box-shadow:0 8px 24px rgba(15,168,120,.28)}
-.header-top-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.header-icons{display:flex;align-items:center;gap:8px}
+.header{background:linear-gradient(160deg,#0b3d2e 0%,#0fa878 48%,#0d8f9e 100%);color:#fff;padding:calc(14px + env(safe-area-inset-top)) 20px 16px;position:sticky;top:0;z-index:100;border-radius:0 0 20px 20px;box-shadow:0 10px 28px rgba(11,61,46,.32);position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent)}
+.header-top-row{display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative;z-index:1}
+.brand-lockup{display:flex;align-items:center;gap:9px;min-width:0;flex:1}
+.brand-mark{width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 32% 30%,#c9ffe8,#12d69a 55%,#0a8f6e);box-shadow:0 0 0 4px rgba(255,255,255,.14);flex-shrink:0}
+.header-icons{display:flex;align-items:center;gap:8px;position:relative;z-index:1}
 .header-scan-btn.busy{opacity:.5;pointer-events:none}
-.header h1{font-family:var(--font-serif);font-size:22px;font-weight:800;letter-spacing:-.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.header-top-row h1{flex:1;min-width:0}
+.header h1{font-family:var(--font-serif);font-size:21px;font-weight:700;letter-spacing:-.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.brand-suffix{font-weight:500;opacity:.72;font-size:0.85em;letter-spacing:.2px}
+.header-top-row h1{min-width:0}
 @media (max-width:360px){
-  .header h1{font-size:18px}
+  .header h1{font-size:17px}
 }
 .header .date{font-size:12px;opacity:.85;margin-top:2px;font-weight:500}
-.header-scan-btn{background:rgba(255,255,255,.2);border:none;color:#fff;width:56px;height:52px;border-radius:15px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;flex-shrink:0;transition:transform .12s,background .15s}
-.header-icon-label{font-size:9.5px;font-weight:700;letter-spacing:.2px;opacity:.9}
-.header-scan-btn:active{background:rgba(255,255,255,.35);transform:scale(.9)}
+.header-scan-btn{background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.22);color:#fff;width:54px;height:50px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;flex-shrink:0;transition:transform .12s,background .15s}
+.header-icon-label{font-size:9px;font-weight:700;letter-spacing:.2px;opacity:.9}
+.header-scan-btn:active{background:rgba(255,255,255,.3);transform:scale(.92)}
 .pc-indicators{display:flex;flex-direction:column;gap:6px;margin-top:8px}
 .pc-indicator .fodmap-badge{display:inline-block}
-.date-nav{display:flex;align-items:center;gap:10px;margin-top:5px}
-.date-nav-btn{background:rgba(255,255,255,.2);border:none;color:#fff;width:34px;height:34px;border-radius:10px;font-size:17px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .15s}
-.date-nav-btn:active{background:rgba(255,255,255,.35);transform:scale(.92)}
+.date-nav{display:flex;align-items:center;gap:10px;margin-top:8px;position:relative;z-index:1}
+.date-nav-btn{background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);color:#fff;width:32px;height:32px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .15s}
+.date-nav-btn:active{background:rgba(255,255,255,.32);transform:scale(.92)}
 .date-nav .date{margin-top:0;cursor:pointer}
 .date-nav .date.not-today{font-weight:700;text-decoration:underline;text-underline-offset:2px}
 
@@ -239,6 +243,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .tl-marker.tl-meal .tl-marker-dot{border-color:#3b82f6;background:#e8f0fe}
 .tl-marker.tl-activity .tl-marker-dot{border-color:#ef4444;background:#fdeaea}
 .tl-marker.tl-stool .tl-marker-dot{border-color:#8d6e63;background:#efe7e5}
+.tl-marker.tl-supp .tl-marker-dot{border-color:#8b5cf6;background:#f0eafe}
 .tl-now-line{position:absolute;top:0;bottom:0;width:1.5px;background:rgba(30,30,30,.5);z-index:2;border-radius:1px}
 .tl-work-block{position:absolute;top:0;bottom:0;background:rgba(255,255,255,.18)}
 .timeline-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
@@ -367,7 +372,10 @@ textarea.form-input{min-height:68px;resize:none}
 .akt-tile-icon{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;background:#fff;box-shadow:0 1px 3px rgba(16,24,40,.08)}
 .akt-tile-label{font-size:10.5px;font-weight:700;color:var(--text);text-align:center;line-height:1.15}
 .akt-tile.selected{background:var(--green-light);border-color:var(--green)}
+.akt-tile.picking{background:var(--blue-light);border-color:var(--blue);box-shadow:0 0 0 2px var(--blue-light)}
 .akt-tile-check{position:absolute;top:5px;right:5px;width:16px;height:16px;border-radius:50%;background:var(--green);color:#fff;font-size:9px;display:none;align-items:center;justify-content:center;font-weight:800}
+.supp-picked-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.supp-picked-chip{background:var(--blue-light);color:var(--blue);border-radius:14px;padding:5px 11px;font-size:12px;font-weight:700}
 .akt-tile.selected .akt-tile-check{display:flex}
 .akt-tile:nth-child(1) .akt-tile-icon{background:linear-gradient(145deg,#eaf1ff,#dbe8ff)}
 .akt-tile:nth-child(2) .akt-tile-icon{background:linear-gradient(145deg,#fef3e2,#fde6c2)}
@@ -418,6 +426,9 @@ textarea.form-input{min-height:68px;resize:none}
 .photo-preview-wrap{position:relative;margin-top:8px;display:none}
 .photo-preview-wrap.show{display:block}
 .photo-selected-chip{background:var(--green-light);color:var(--green);border-radius:12px;padding:12px 14px;font-size:13px;font-weight:600;text-align:center}
+.food-suggestions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.food-suggestion-chip{background:var(--gray);border:none;border-radius:16px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--text);cursor:pointer}
+.food-suggestion-chip:active{background:var(--green-light);color:var(--green)}
 .photo-remove{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:50%;width:26px;height:26px;font-size:14px;cursor:pointer;line-height:1}
 .photo-analyze-btn{width:100%;background:var(--purple);color:#fff;border:none;border-radius:11px;padding:11px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;display:none}
 .photo-analyze-btn.show{display:block}
@@ -537,7 +548,10 @@ textarea.form-input{min-height:68px;resize:none}
 
 <div class="header">
   <div class="header-top-row">
-    <h1 id="headerTitle">🥗 Ernährungstagebuch</h1>
+    <div class="brand-lockup">
+      <span class="brand-mark"></span>
+      <h1 id="headerTitle">GutHealth <span class="brand-suffix">Log</span></h1>
+    </div>
     <div class="header-icons">
       <button type="button" class="header-scan-btn" id="quickPhotoBtn" onclick="document.getElementById('quickPhotoFile').click()" title="Mahlzeit fotografieren">
         <svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
@@ -564,10 +578,6 @@ textarea.form-input{min-height:68px;resize:none}
 
 <!-- ══ HEUTE ═══════════════════════════════════════════════════════ -->
 <div class="screen active" id="screen-heute">
-
-  <div id="zielBanner" class="ziel-banner" style="display:none">
-    <strong>Mein Ziel</strong><span id="zielText"></span>
-  </div>
 
   <div id="apiKeyHint" class="apikey-hint" style="display:none" onclick="showScreen('profil')">
     <span class="apikey-hint-icon">🔑</span>
@@ -616,6 +626,12 @@ textarea.form-input{min-height:68px;resize:none}
     </div>
   </div>
 
+  <!-- MAHLZEITEN -->
+  <div class="card mahlzeiten-card" onclick="handleMahlzeitenCardClick(event)">
+    <div class="card-title">🍽 Mahlzeiten</div>
+    <div id="todayEntries"></div>
+  </div>
+
   <!-- BUDENOFALK (ein-/ausblendbar per Schieberegler, bleibt an folgenden Tagen aktiv) -->
   <div class="card toggle-card" id="budenofalkCard">
     <div class="toggle-card-header">
@@ -635,10 +651,26 @@ textarea.form-input{min-height:68px;resize:none}
     </div>
   </div>
 
-  <!-- MAHLZEITEN -->
-  <div class="card mahlzeiten-card" onclick="handleMahlzeitenCardClick(event)">
-    <div class="card-title">🍽 Mahlzeiten</div>
-    <div id="todayEntries"></div>
+  <!-- SUPPLEMENTS (ein-/ausblendbar per Schieberegler) -->
+  <div class="card toggle-card" id="supplementsCard">
+    <div class="toggle-card-header">
+      <div class="card-title" style="color:#6b5b95;margin-bottom:0">💊 Supplements</div>
+      <label class="switch">
+        <input type="checkbox" id="supplementsToggle" onchange="toggleSupplementsField(this)">
+        <span class="switch-slider"></span>
+      </label>
+    </div>
+    <div class="toggle-card-body" id="supplementsBody">
+      <div class="akt-grid" id="supplementChipRow" style="margin-top:10px">
+        <button class="akt-tile" data-supp="🧪 Kreatin" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">🧪</span><span class="akt-tile-label">Kreatin</span><span class="akt-tile-check">✓</span></button>
+        <button class="akt-tile" data-supp="🧂 Magnesium" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">🧂</span><span class="akt-tile-label">Magnesium</span><span class="akt-tile-check">✓</span></button>
+        <button class="akt-tile" data-supp="💊 Vitamine" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">💊</span><span class="akt-tile-label">Vitamine</span><span class="akt-tile-check">✓</span></button>
+        <button class="akt-tile" data-supp="⚡ Zink" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">⚡</span><span class="akt-tile-label">Zink</span><span class="akt-tile-check">✓</span></button>
+      </div>
+      <div style="font-size:10.5px;color:var(--gray-dark);margin-top:6px">Mehrere gleichzeitig antippen, falls zusammen eingenommen</div>
+      <div class="akt-editor" id="suppEditor" style="display:none"></div>
+      <div id="supplementsList"></div>
+    </div>
   </div>
 
   <!-- WASSER -->
@@ -1051,7 +1083,8 @@ textarea.form-input{min-height:68px;resize:none}
           <label class="form-label" style="margin-bottom:0">🍽 Speisen &amp; Menge</label>
           <button type="button" class="ft-toggle-btn" id="foodTableToggleBtn" onclick="toggleFoodTableMode()">📋 Tabellarisch eintragen</button>
         </div>
-        <textarea class="form-input" id="inputFood" placeholder="z.B. 2 Scheiben Vollkornbrot…" rows="3"></textarea>
+        <textarea class="form-input" id="inputFood" placeholder="z.B. 2 Scheiben Vollkornbrot…" rows="3" oninput="onFoodInputChange(this)"></textarea>
+        <div class="food-suggestions" id="foodSuggestions"></div>
         <div id="foodTableWrap" style="display:none">
           <div id="foodTableRows"></div>
           <button type="button" class="ep-fi-add" onclick="addFoodTableRow()">➕ Lebensmittel hinzufügen</button>
@@ -1156,20 +1189,42 @@ textarea.form-input{min-height:68px;resize:none}
 let db = JSON.parse(localStorage.getItem('ernaehrung_db3') || '{"entries":[],"water":{},"notizen":{},"dayData":{},"profile":{}}');
 if(!db.dayData) db.dayData={};
 function save(){ localStorage.setItem('ernaehrung_db3', JSON.stringify(db)); }
-function todayKey(){ return new Date().toISOString().slice(0,10); }
-let currentViewDate=new Date();
+
+// ── SCHWEIZER LOKALZEIT — alle Uhrzeiten/Daten in der App laufen auf
+// Europe/Zurich, unabhängig vom tatsächlichen Standort/Zeitzone des Geräts ──
+const APP_TIMEZONE='Europe/Zurich';
+function swissNowParts(){
+  const parts=new Intl.DateTimeFormat('en-CA',{
+    timeZone:APP_TIMEZONE,year:'numeric',month:'2-digit',day:'2-digit',
+    hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false
+  }).formatToParts(new Date());
+  const map={};
+  parts.forEach(p=>{ if(p.type!=='literal') map[p.type]=p.value; });
+  return {
+    year:parseInt(map.year), month:parseInt(map.month), day:parseInt(map.day),
+    hour:parseInt(map.hour)%24, minute:parseInt(map.minute), second:parseInt(map.second)
+  };
+}
+function todayKey(){
+  const p=swissNowParts();
+  return `${p.year}-${String(p.month).padStart(2,'0')}-${String(p.day).padStart(2,'0')}`;
+}
+function swissTodayAsLocalDate(){
+  const p=swissNowParts();
+  return new Date(p.year,p.month-1,p.day); // reiner Kalendertag, geräte-lokal für Navigations-Arithmetik
+}
+let currentViewDate=swissTodayAsLocalDate();
 function dateKeyFromDate(d){
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 function viewKey(){ return dateKeyFromDate(currentViewDate); }
 function getTodayData(){ if(!db.dayData[viewKey()]) db.dayData[viewKey()]={stuhlgang:[]}; return db.dayData[viewKey()]; }
 function nowTime(){
-  const n=new Date();
-  return `${String(n.getHours()).padStart(2,'0')}:${String(n.getMinutes()).padStart(2,'0')}`;
+  const p=swissNowParts();
+  return `${String(p.hour).padStart(2,'0')}:${String(p.minute).padStart(2,'0')}`;
 }
 function nowTimestamp(){
-  const n=new Date();
-  return n.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'}) + ' Uhr';
+  return nowTime()+' Uhr (Schweiz)';
 }
 function formatDate(d){
   const days=['So','Mo','Di','Mi','Do','Fr','Sa'];
@@ -1187,7 +1242,7 @@ let selType='Frühstück',selStoolSc=3,selBlaehbauch=1,selBlaehungen=1;
 let editingEntryId=null;
 let currentPhotoData=null, currentAiAnalysis=null;
 function guessTypeFromTime(){
-  const h=new Date().getHours();
+  const h=swissNowParts().hour;
   if(h>=5&&h<10) return 'Frühstück';
   if(h>=10&&h<14) return 'Mittagessen';
   if(h>=14&&h<18) return 'Snack';
@@ -1207,6 +1262,7 @@ function renderDay(){
   renderWater();
   renderCaffeine();
   renderStuhlgang();
+  renderSupplements();
   renderToday();
   renderHealthStats();
   renderTimeline();
@@ -1247,7 +1303,8 @@ async function getSunTimes(dateKey){
     const data=await resp.json();
     if(data.status!=='OK') throw new Error('bad status');
     const sr=new Date(data.results.sunrise), ss=new Date(data.results.sunset);
-    const result={sunrise:sr.getHours()+sr.getMinutes()/60, sunset:ss.getHours()+ss.getMinutes()/60};
+    const srParts=swissPartsForInstant(sr), ssParts=swissPartsForInstant(ss);
+    const result={sunrise:srParts.hour+srParts.minute/60, sunset:ssParts.hour+ssParts.minute/60};
     if(!db.astro) db.astro={};
     db.astro[dateKey]=result;
     save();
@@ -1255,6 +1312,14 @@ async function getSunTimes(dateKey){
   }catch(e){
     return {sunrise:6.5,sunset:20}; // Fallback ohne Internet/Standort
   }
+}
+function swissPartsForInstant(dateObj){
+  const parts=new Intl.DateTimeFormat('en-CA',{
+    timeZone:APP_TIMEZONE,hour:'2-digit',minute:'2-digit',hour12:false
+  }).formatToParts(dateObj);
+  const map={};
+  parts.forEach(p=>{ if(p.type!=='literal') map[p.type]=p.value; });
+  return {hour:parseInt(map.hour)%24, minute:parseInt(map.minute)};
 }
 function decToTime(h){
   const hh=Math.floor(h), mm=Math.round((h-hh)*60);
@@ -1296,6 +1361,7 @@ async function renderTimeline(){
   const entries=(db.entries||[]).filter(e=>e.date===dateKey);
   const stuhlgang=d.stuhlgang||[];
   const aktItems=(d.aktivitaet&&d.aktivitaet.items)||[];
+  const suppItems=(d.supplements&&d.supplements.items)||[];
 
   const sun=await getSunTimes(dateKey);
   if(viewKey()!==dateKey) return; // Nutzer hat inzwischen zu einem anderen Tag gewechselt
@@ -1309,8 +1375,8 @@ async function renderTimeline(){
     }
   }
   if(dateKey===todayKey()){
-    const now=new Date();
-    const h=now.getHours()+now.getMinutes()/60;
+    const nowP=swissNowParts();
+    const h=nowP.hour+nowP.minute/60;
     trackHtml+=`<div class="tl-now-line" style="left:${tlPct(h)}%" title="Jetzt"></div>`;
   }
   track.innerHTML=trackHtml;
@@ -1330,6 +1396,13 @@ async function renderTimeline(){
     const h=timeToHour(s.time);
     if(h!=null) html+=tlMarker(tlPct(h),'tl-stool','🚽',`Stuhlgang ${s.time}`);
   });
+  suppItems.forEach(it=>{
+    const h=timeToHour(it.time);
+    if(h!=null){
+      const parts=it.name.split(' ');
+      html+=tlMarker(tlPct(h),'tl-supp',parts[0],`${parts.slice(1).join(' ')} ${it.time}`);
+    }
+  });
   markersEl.innerHTML=html;
 
   const subtrack=document.getElementById('timelineSubtrack');
@@ -1344,7 +1417,7 @@ async function renderTimeline(){
 
   const legend=document.getElementById('timelineLegend');
   if(legend){
-    const items=[['#e0a95c','☀️ Sonne'],['#3b82f6','🍽 Mahlzeit'],['#ef4444','🏃 Aktivität'],['#8d6e63','🚽 Stuhlgang']];
+    const items=[['#e0a95c','☀️ Sonne'],['#3b82f6','🍽 Mahlzeit'],['#ef4444','🏃 Aktivität'],['#8d6e63','🚽 Stuhlgang'],['#8b5cf6','💊 Supplement']];
     if(d.arbeitBeginn&&d.arbeitEnde) items.push(['rgba(140,140,140,.6)','💼 Arbeit']);
     items.push(['#9aa1ab','⬆️ Wachzeit']);
     legend.innerHTML=items.map(([c,l])=>`<span class="tl-legend-item"><span class="tl-legend-dot" style="background:${c}"></span>${l}</span>`).join('');
@@ -1402,7 +1475,7 @@ function navigateDay(delta){
 }
 function goToToday(){
   if(viewKey()===todayKey()) return;
-  currentViewDate=new Date();
+  currentViewDate=swissTodayAsLocalDate();
   renderHeaderDate();
   renderDay();
 }
@@ -1418,6 +1491,7 @@ window.onload=function(){
   applyBudenofalkVisibility();
   applyHealthStatsVisibility();
   applyKaffeeCardVisibility();
+  applySupplementsVisibility();
   applyReminderToggleState();
   checkReminders();
   renderFoodMemoryList();
@@ -1904,6 +1978,144 @@ function saveAktivitaetText(){
   d.aktivitaet.text=document.getElementById('aktivitaetText').value;
   save();
 }
+
+// ── SUPPLEMENTS: mehrere gleichzeitig antippen → gemeinsame Uhrzeit → speichern ──
+let suppPendingSelection=[];
+let suppSharedTime=null;
+let suppEditingIdx=null;
+let suppEditTimeVal=null;
+
+function toggleSupplementPick(btn){
+  suppEditingIdx=null; suppEditTimeVal=null;
+  const name=btn.dataset.supp;
+  const i=suppPendingSelection.indexOf(name);
+  if(i>=0) suppPendingSelection.splice(i,1);
+  else suppPendingSelection.push(name);
+  updateSuppTilePicking();
+  renderSuppEditor();
+  if(suppPendingSelection.length===1){
+    const editor=document.getElementById('suppEditor');
+    if(editor) editor.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+}
+function updateSuppTilePicking(){
+  document.querySelectorAll('#supplementChipRow .akt-tile').forEach(c=>{
+    c.classList.toggle('picking',suppPendingSelection.includes(c.dataset.supp));
+  });
+}
+function setSuppSharedTime(val){ suppSharedTime=val; }
+function cancelSuppPicking(){
+  suppPendingSelection=[]; suppSharedTime=null;
+  updateSuppTilePicking();
+  renderSuppEditor();
+}
+function saveSuppMulti(){
+  if(!suppPendingSelection.length) return;
+  const d=getTodayData();
+  if(!d.supplements) d.supplements={items:[]};
+  if(!d.supplements.items) d.supplements.items=[];
+  const time=suppSharedTime||nowTime();
+  suppPendingSelection.forEach(name=>{ d.supplements.items.push({name,time}); });
+  save();
+  const count=suppPendingSelection.length;
+  suppPendingSelection=[]; suppSharedTime=null;
+  updateSuppTilePicking();
+  renderSuppEditor();
+  renderSupplementsList();
+  renderTimeline();
+  toast(`✅ ${count} Supplement${count>1?'e':''} gespeichert`);
+}
+function editSupplement(idx){
+  suppPendingSelection=[]; updateSuppTilePicking();
+  suppEditingIdx=idx; suppEditTimeVal=null;
+  renderSuppEditor();
+  const editor=document.getElementById('suppEditor');
+  if(editor) editor.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function setSuppEditTime(val){ suppEditTimeVal=val; }
+function cancelSuppEditor(){
+  suppEditingIdx=null; suppEditTimeVal=null;
+  renderSuppEditor();
+}
+function saveSuppEdit(){
+  if(suppEditingIdx==null) return;
+  const d=getTodayData();
+  const it=d.supplements&&d.supplements.items&&d.supplements.items[suppEditingIdx];
+  if(!it) return;
+  it.time=suppEditTimeVal||it.time;
+  save();
+  suppEditingIdx=null; suppEditTimeVal=null;
+  renderSuppEditor();
+  renderSupplementsList();
+  renderTimeline();
+  toast('✅ Aktualisiert');
+}
+function removeSupplement(idx){
+  const d=getTodayData();
+  if(!d.supplements||!d.supplements.items) return;
+  d.supplements.items.splice(idx,1);
+  save();
+  if(suppEditingIdx===idx){ suppEditingIdx=null; suppEditTimeVal=null; }
+  renderSuppEditor();
+  renderSupplementsList();
+  renderTimeline();
+}
+function renderSuppEditor(){
+  const box=document.getElementById('suppEditor');
+  if(!box) return;
+  if(suppEditingIdx!=null){
+    const d=getTodayData();
+    const it=d.supplements&&d.supplements.items&&d.supplements.items[suppEditingIdx];
+    if(!it){ suppEditingIdx=null; box.style.display='none'; box.innerHTML=''; return; }
+    box.style.display='block';
+    const parts=it.name.split(' '), icon=parts[0], label=parts.slice(1).join(' ');
+    box.innerHTML=`
+      <div class="akt-editor-header"><span class="akt-editor-icon">${icon}</span><span class="akt-editor-title">${label}</span></div>
+      <div class="sub-label">Uhrzeit</div>
+      <input type="time" class="form-input time-input" style="width:130px" value="${suppEditTimeVal!=null?suppEditTimeVal:(it.time||'')}" oninput="setSuppEditTime(this.value)">
+      <button class="btn-primary" style="margin-top:12px" onclick="saveSuppEdit()">✅ Speichern</button>
+      <button class="btn-secondary" style="margin-top:6px;background:var(--gray);color:var(--gray-dark)" onclick="cancelSuppEditor()">Abbrechen</button>`;
+    return;
+  }
+  if(!suppPendingSelection.length){ box.style.display='none'; box.innerHTML=''; return; }
+  box.style.display='block';
+  const time=suppSharedTime||nowTime();
+  const chips=suppPendingSelection.map(n=>{ const p=n.split(' '); return `<span class="supp-picked-chip">${p[0]} ${p.slice(1).join(' ')}</span>`; }).join('');
+  box.innerHTML=`
+    <div class="sub-label">Ausgewählt</div>
+    <div class="supp-picked-row">${chips}</div>
+    <div class="sub-label">Uhrzeit</div>
+    <input type="time" class="form-input time-input" style="width:130px" value="${time}" oninput="setSuppSharedTime(this.value)">
+    <button class="btn-primary" style="margin-top:12px" onclick="saveSuppMulti()">✅ ${suppPendingSelection.length} Supplement${suppPendingSelection.length>1?'e':''} speichern</button>
+    <button class="btn-secondary" style="margin-top:6px;background:var(--gray);color:var(--gray-dark)" onclick="cancelSuppPicking()">Abbrechen</button>`;
+}
+function renderSupplementsList(){
+  const d=getTodayData();
+  const items=(d.supplements&&d.supplements.items)||[];
+  const container=document.getElementById('supplementsList');
+  if(container){
+    container.innerHTML=items.map((it,idx)=>{
+      const parts=it.name.split(' ');
+      const icon=parts[0], label=parts.slice(1).join(' ');
+      return `
+      <div class="akt-row" onclick="editSupplement(${idx})">
+        <div class="akt-row-icon">${icon}</div>
+        <div class="akt-row-info">
+          <span class="akt-row-name">${label}</span>
+          <span class="akt-row-meta">${it.time||''}</span>
+        </div>
+        <button type="button" class="akt-row-del" onclick="event.stopPropagation();removeSupplement(${idx})">−</button>
+      </div>`;
+    }).join('');
+  }
+  document.querySelectorAll('#supplementChipRow .akt-tile').forEach(c=>c.classList.toggle('selected',items.some(it=>it.name===c.dataset.supp)));
+}
+function renderSupplements(){
+  suppPendingSelection=[]; suppSharedTime=null; suppEditingIdx=null; suppEditTimeVal=null;
+  renderSuppEditor();
+  renderSupplementsList();
+  updateSuppTilePicking();
+}
 // ── WATER ─────────────────────────────────────────────────────────────
 function renderWater(){
   const key=viewKey(),val=(db.water||{})[key]||0;
@@ -2035,9 +2247,11 @@ function saveStuhlgang(){
   save(); closeStoolModal(); renderStuhlgang(); renderTimeline(); toast('🚽 Gespeichert');
 }
 function deleteStuhlgang(i){
-  if(!confirm('Eintrag löschen?')) return;
-  getTodayData().stuhlgang.splice(i,1);
+  const d=getTodayData();
+  if(!d.stuhlgang||!d.stuhlgang[i]) return;
+  d.stuhlgang.splice(i,1);
   save(); renderStuhlgang(); renderTimeline();
+  toast('🗑 Stuhlgang-Eintrag gelöscht');
 }
 
 // ── TAGESNOTIZ ────────────────────────────────────────────────────────
@@ -2096,6 +2310,13 @@ function applyHealthStatsVisibility(){
 function toggleKaffeeCardField(checkbox){
   localStorage.setItem('ernaehrung_kaffeecard_enabled',checkbox.checked?'true':'false');
   applyKaffeeCardVisibility();
+}
+function toggleSupplementsField(checkbox){
+  localStorage.setItem('ernaehrung_supplements_enabled',checkbox.checked?'true':'false');
+  applySupplementsVisibility();
+}
+function applySupplementsVisibility(){
+  applyToggleCardVisibility('ernaehrung_supplements_enabled','supplementsCard','supplementsToggle',false);
 }
 function applyKaffeeCardVisibility(){
   applyToggleCardVisibility('ernaehrung_kaffeecard_enabled','kaffeeCard','kaffeeToggle',true);
@@ -2490,10 +2711,9 @@ async function callTextAnalysisAPI(userText,maxTokens=1200){
 // ── PROFILE ───────────────────────────────────────────────────────────
 function loadProfile(){
   const p=db.profile||{};
-  if(p.name){document.getElementById('profileName').value=p.name;document.getElementById('headerTitle').textContent=`🥗 ${p.name}s Tagebuch`;}
+  if(p.name) document.getElementById('profileName').value=p.name;
   if(p.ziel) document.getElementById('profileZiel').value=p.ziel;
   if(p.zeitraum) document.getElementById('profileZeitraum').value=p.zeitraum;
-  updateZielBanner();
   loadDrinkGoals();
 }
 function getDrinkGoals(){
@@ -2530,10 +2750,6 @@ function applyTeeVisibility(){
 function saveProfile(){
   db.profile={name:document.getElementById('profileName').value,ziel:document.getElementById('profileZiel').value,zeitraum:document.getElementById('profileZeitraum').value};
   save(); loadProfile();
-}
-function updateZielBanner(){
-  const z=(db.profile||{}).ziel,b=document.getElementById('zielBanner');
-  if(z){b.style.display='block';document.getElementById('zielText').textContent=z;}else b.style.display='none';
 }
 
 // ── MANUELLE LEBENSMITTEL-TABELLE (Speisen tabellarisch mit Gramm-Menge) ──
@@ -2592,6 +2808,32 @@ function renderFoodMemoryList(){
   if(!dl) return;
   dl.innerHTML=(db.foodMemory||[]).map(n=>`<option value="${n.replace(/"/g,'&quot;')}"></option>`).join('');
 }
+// Vorschlags-Chips unter dem Freitextfeld "Speisen & Menge", basierend auf früher eingegebenen Lebensmitteln
+function onFoodInputChange(el){
+  const box=document.getElementById('foodSuggestions');
+  if(!box) return;
+  const lastPart=el.value.split(',').pop().trim().toLowerCase();
+  if(!lastPart){ box.innerHTML=''; return; }
+  const memory=db.foodMemory||[];
+  const matches=memory.filter(n=>n.toLowerCase().includes(lastPart)&&n.toLowerCase()!==lastPart).slice(0,6);
+  if(!matches.length){ box.innerHTML=''; return; }
+  box.innerHTML=matches.map(n=>`<button type="button" class="food-suggestion-chip" onclick="applyFoodSuggestion(${JSON.stringify(n)})">${n}</button>`).join('');
+}
+function applyFoodSuggestion(name){
+  const el=document.getElementById('inputFood');
+  if(!el) return;
+  let parts=el.value.split(',').map(p=>p.trim()).filter(Boolean);
+  if(!parts.length) parts=[name];
+  else parts[parts.length-1]=name;
+  el.value=parts.join(', ')+', ';
+  const box=document.getElementById('foodSuggestions');
+  if(box) box.innerHTML='';
+  el.focus();
+}
+function resetFoodSuggestions(){
+  const box=document.getElementById('foodSuggestions');
+  if(box) box.innerHTML='';
+}
 function renderManualItemsHTML(items){
   if(!items||!items.length) return '';
   return `<div class="food-item-list">${items.map(it=>`<div class="food-item-row"><div class="food-item-name">${it.name}${it.menge?` <span class="food-item-menge">(${it.menge} g)</span>`:''}</div></div>`).join('')}</div>`;
@@ -2616,7 +2858,7 @@ async function generateRecipeSuggestions(){
     }
     return acc;
   },{kcal:0,p:0,kh:0,f:0});
-  const hour=new Date().getHours();
+  const hour=swissNowParts().hour;
   const mealType=hour<10?'Frühstück':hour<14?'Mittagessen':hour<18?'Snack':'Abendessen';
   try{
     const parsed=await callTextAnalysisAPI(
@@ -2670,8 +2912,7 @@ function applyReminderToggleState(){
 function checkReminders(){
   if(localStorage.getItem('ernaehrung_reminders_enabled')!=='true') return;
   if(!('Notification' in window)||Notification.permission!=='granted') return;
-  const now=new Date();
-  const hour=now.getHours();
+  const hour=swissNowParts().hour;
   const tKey=todayKey();
   const entries=(db.entries||[]).filter(e=>e.date===tKey);
   const water=(db.water||{})[tKey]||0;
@@ -2831,6 +3072,7 @@ function openModal(){
   editingEntryId=null;
   resetPhotoUI();
   resetFoodTableUI();
+  resetFoodSuggestions();
   setTimeNow(); selType='Frühstück';
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
   ['inputFood','inputDrink','inputNote'].forEach(id=>document.getElementById(id).value='');
@@ -2882,7 +3124,7 @@ function editEntry(id){
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow='hidden';
 }
-function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+function closeModal(){resetFoodSuggestions();document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
 function closeModalOutside(e){if(e.target===document.getElementById('modalOverlay'))closeModal();}
 function selectType(btn){document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');selType=btn.dataset.type;}
 
@@ -2965,8 +3207,8 @@ function getAnalysisRange(period){
     return {from:allDates.length?allDates[0]:to,to};
   }
   const days=parseInt(period);
-  const d=new Date(); d.setDate(d.getDate()-(days-1));
-  return {from:d.toISOString().slice(0,10),to};
+  const d=swissTodayAsLocalDate(); d.setDate(d.getDate()-(days-1));
+  return {from:dateKeyFromDate(d),to};
 }
 function analysisStoreKey(period){
   return period==='today'?todayKey():`${period}:${todayKey()}`;
@@ -3218,14 +3460,13 @@ function saveInlineEdit(id){
 }
 
 function deleteEntry(id){
-  if(!confirm('Eintrag löschen?')) return;
   db.entries=(db.entries||[]).filter(e=>e.id!==id);
   save(); renderToday(); renderTimeline(); toast('🗑 Gelöscht');
 }
 
 // ── RENDER WEEK ───────────────────────────────────────────────────────
 function renderWeek(){
-  const today=new Date(),allEntries=db.entries||[];
+  const today=swissTodayAsLocalDate(),allEntries=db.entries||[];
   let total=0,active=0;
   const days=[];
   for(let i=6;i>=0;i--){const d=new Date(today);d.setDate(today.getDate()-i);days.push(d);}
@@ -3243,6 +3484,7 @@ function renderWeek(){
     if(dd.energieLevel) chips.push(`⚡ ${dd.energieLevel}/5`);
   if(dd.budenofalk!=null&&dd.budenofalk>0) chips.push(`💊 ${dd.budenofalk}mg`);
     if(dd.aktivitaet&&(dd.aktivitaet.items||[]).length) chips.push(`🏃 ${dd.aktivitaet.items.map(it=>it.act).join(', ')}`);
+  if(dd.supplements&&(dd.supplements.items||[]).length) chips.push(`💊 ${dd.supplements.items.map(it=>it.name.split(' ').slice(1).join(' ')).join(', ')}`);
     if(dd.arbeit) chips.push(`💼 ${dd.arbeit}`);
     if((dd.stuhlgang||[]).length) chips.push(`🚽 ×${dd.stuhlgang.length}`);
     if(db.water?.[key]) chips.push(`💧 ${Math.round(db.water[key]*10)/10}×`);
@@ -3265,7 +3507,7 @@ function renderWeek(){
 function toggleDay(h){h.nextElementSibling.classList.toggle('open');}
 
 // ── KALENDER (Monatsansicht mit Navigation) ──────────────────────────────
-let calViewDate=new Date();
+let calViewDate=swissTodayAsLocalDate();
 let calSelectedDate=null;
 const MONTH_NAMES=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 
@@ -3319,6 +3561,7 @@ function calSelectDay(dateStr){
   if(dd.energieLevel) chips.push(`⚡ ${dd.energieLevel}/5`);
   if(dd.budenofalk!=null&&dd.budenofalk>0) chips.push(`💊 ${dd.budenofalk}mg`);
   if(dd.aktivitaet&&(dd.aktivitaet.items||[]).length) chips.push(`🏃 ${dd.aktivitaet.items.map(it=>it.act).join(', ')}`);
+  if(dd.supplements&&(dd.supplements.items||[]).length) chips.push(`💊 ${dd.supplements.items.map(it=>it.name.split(' ').slice(1).join(' ')).join(', ')}`);
   if((dd.stuhlgang||[]).length) chips.push(`🚽 ×${dd.stuhlgang.length}`);
   const caff=(db.caffeine||{})[dateStr];
   if(caff&&(caff.kaffee||caff.espresso)) chips.push(`☕ ${caff.kaffee||0}${caff.milch?' 🥛':''} · 🍵 ${caff.espresso||0}`);
@@ -3332,7 +3575,7 @@ const GUTTY_GOAL=14;
 function calculateStreak(){
   const entryDates=new Set((db.entries||[]).map(e=>e.date));
   let streak=0;
-  const d=new Date();
+  const d=swissTodayAsLocalDate();
   while(entryDates.has(dateKeyFromDate(d))){
     streak++;
     d.setDate(d.getDate()-1);
@@ -3520,16 +3763,19 @@ function setReportPreset(btn){
   document.querySelectorAll('#reportPresetRow .chip').forEach(c=>c.classList.remove('selected'));
   btn.classList.add('selected');
   const days=parseInt(btn.dataset.days);
-  const to=new Date();
+  const to=swissTodayAsLocalDate();
   let from;
   if(days===0){
     const allDates=[...new Set([...(db.entries||[]).map(e=>e.date),...Object.keys(db.dayData||{})])].sort();
-    from=allDates.length?new Date(allDates[0]):to;
+    if(allDates.length){
+      const [ay,am,ad]=allDates[0].split('-').map(Number);
+      from=new Date(ay,am-1,ad);
+    } else from=to;
   } else {
-    from=new Date(); from.setDate(to.getDate()-(days-1));
+    from=swissTodayAsLocalDate(); from.setDate(to.getDate()-(days-1));
   }
-  document.getElementById('reportFrom').value=from.toISOString().slice(0,10);
-  document.getElementById('reportTo').value=to.toISOString().slice(0,10);
+  document.getElementById('reportFrom').value=dateKeyFromDate(from);
+  document.getElementById('reportTo').value=dateKeyFromDate(to);
 }
 function initReportDefaults(){
   const row=document.getElementById('reportPresetRow');
