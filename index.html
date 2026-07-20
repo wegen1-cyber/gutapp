@@ -67,6 +67,12 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 
 .card{background:#fff;border-radius:var(--radius);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
 .card-title{font-family:var(--font-serif);font-size:13.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px;color:var(--text)}
+.section-header{margin:24px 4px 10px;display:flex;align-items:center;gap:9px}
+.section-header span{font-family:var(--font-serif);font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:1.1px;color:var(--gray-dark);white-space:nowrap}
+.section-header::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(20,23,28,.12),transparent)}
+.shopping-item{display:flex;align-items:center;gap:9px;padding:7px 0;font-size:13px;color:var(--text);cursor:pointer}
+.shopping-item input[type="checkbox"]{width:18px;height:18px;flex-shrink:0;accent-color:var(--purple)}
+.shopping-item input:checked+span{text-decoration:line-through;opacity:.5}
 .card-title.blue{color:var(--blue)}
 .card-title.orange{color:var(--orange)}
 .card-title.purple{color:var(--purple)}
@@ -165,6 +171,29 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .sleep-picker-pad{height:40px}
 .sleep-picker-highlight{position:absolute;top:40px;left:8px;right:8px;height:40px;border-top:1.5px solid #d5d5d5;border-bottom:1.5px solid #d5d5d5;pointer-events:none}
 .time-picker-btn{width:100%;background:var(--gray);border:2px solid transparent;border-radius:9px;padding:9px 11px;font-size:15px;font-weight:700;font-family:inherit;color:var(--text);text-align:center;cursor:pointer}
+.sleep-editor-card{background:linear-gradient(160deg,#1a2140 0%,#2d2f5e 55%,#3d3570 100%);border-radius:20px;padding:16px 14px;margin-top:10px;color:#fff;position:relative;overflow:hidden;box-shadow:0 8px 24px rgba(26,33,64,.3)}
+.sleep-editor-card::before{content:'';position:absolute;top:-30px;right:-24px;width:110px;height:110px;background:radial-gradient(circle,rgba(255,255,255,.09),transparent 70%);border-radius:50%;pointer-events:none}
+.sleep-editor-cols{display:flex;align-items:flex-start;gap:4px;position:relative;z-index:1}
+.sleep-editor-col{flex:1;text-align:center;min-width:0}
+.sleep-editor-col-label{font-size:11px;font-weight:700;margin-bottom:8px;opacity:.92;white-space:nowrap}
+.sleep-editor-arrow{padding-top:50px;font-size:15px;opacity:.45;flex-shrink:0}
+.sleep-date-input{width:100%;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:7px 4px;font-size:10.5px;font-weight:600;color:#fff;text-align:center;font-family:inherit;margin-bottom:9px;-webkit-appearance:none;color-scheme:dark}
+.sleep-duration-badge{display:block;text-align:center;margin-top:16px;font-family:var(--font-serif);font-size:23px;font-weight:800;position:relative;z-index:1;letter-spacing:-.3px}
+.sleep-duration-badge small{display:block;font-size:9.5px;font-weight:700;opacity:.65;text-transform:uppercase;letter-spacing:.6px;margin-top:2px}
+.sleep-editor-card .mini-wheel-wrap{background:rgba(255,255,255,.1);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);padding:0 3px}
+.sleep-editor-card .mini-wheel{width:32px}
+.sleep-editor-card .mini-wheel-item{color:rgba(255,255,255,.38);font-size:12.5px}
+.sleep-editor-card .mini-wheel-item.center{color:#fff;font-size:15.5px}
+.sleep-editor-card .mini-wheel-colon{color:rgba(255,255,255,.65);font-size:13px}
+.sleep-editor-card .mini-wheel-highlight{border-color:rgba(255,255,255,.28);border-radius:6px}
+.mini-wheel-wrap{position:relative;display:flex;align-items:center;justify-content:center;gap:1px;background:#fff;border-radius:12px;padding:0 6px;flex-shrink:0}
+.mini-wheel{height:102px;width:38px;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:relative}
+.mini-wheel::-webkit-scrollbar{display:none}
+.mini-wheel-item{height:34px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--gray-dark);scroll-snap-align:center;opacity:.35;transition:opacity .1s,font-size .1s}
+.mini-wheel-item.center{color:var(--green);font-size:17px;opacity:1;font-weight:800}
+.mini-wheel-pad{height:34px}
+.mini-wheel-colon{font-size:15px;font-weight:800;color:var(--text)}
+.mini-wheel-highlight{position:absolute;top:34px;left:4px;right:4px;height:34px;border-top:1.5px solid #e2e4e8;border-bottom:1.5px solid #e2e4e8;pointer-events:none}
 .time-picker-btn:active{border-color:var(--green);background:#fff}
 .time-wheel-popover{display:none;position:absolute;top:100%;left:0;right:0;margin-top:6px;background:#fff;border-radius:16px;box-shadow:0 10px 26px rgba(0,0,0,.18);padding:10px;z-index:60}
 .time-wheel-popover.open{display:block}
@@ -250,8 +279,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .tl-legend-item{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--gray-dark);font-weight:600}
 .tl-legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .timeline-bar-wrap{-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
-.timeline-subtrack{position:relative;height:5px;border-radius:3px;background:#eceff1;margin-top:6px;overflow:hidden}
-.timeline-subtrack-fill{position:absolute;top:0;bottom:0;background:#9aa1ab;border-radius:3px}
+.timeline-sleep-overlay{position:absolute;top:0;bottom:0;background:linear-gradient(180deg,rgba(10,12,20,.5),rgba(10,12,20,.62));-webkit-backdrop-filter:blur(1.5px) saturate(60%);backdrop-filter:blur(1.5px) saturate(60%);border-left:1px solid rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.18)}
+.timeline-sleep-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:11px;opacity:.85;filter:drop-shadow(0 1px 1px rgba(0,0,0,.4))}
 .tl-detail-row{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid #f0f0f0;font-size:13px;align-items:baseline}
 .tl-detail-row:last-child{border-bottom:none}
 .tl-detail-time{font-weight:800;color:var(--green);min-width:44px;flex-shrink:0}
@@ -585,6 +614,8 @@ textarea.form-input{min-height:68px;resize:none}
     <span class="apikey-hint-arrow">›</span>
   </div>
 
+
+  <div class="section-header" style="margin-top:4px"><span>🌅 Überblick</span></div>
   <!-- TAGESVERLAUF-ZEITLEISTE -->
   <div class="card timeline-card">
     <div class="card-title">🌅 Tagesverlauf <span class="multi-hint" id="timelineHint">Halten für Liste</span></div>
@@ -592,7 +623,6 @@ textarea.form-input{min-height:68px;resize:none}
       <div class="timeline-bar-wrap" onpointerdown="startTimelinePress(event)" onpointerup="cancelTimelinePress()" onpointerleave="cancelTimelinePress()" onpointercancel="cancelTimelinePress()">
         <div class="timeline-track" id="timelineTrack"></div>
         <div class="timeline-markers" id="timelineMarkers"></div>
-        <div class="timeline-subtrack" id="timelineSubtrack"></div>
       </div>
       <div class="timeline-hours">
         <span>0</span><span>3</span><span>6</span><span>9</span><span>12</span><span>15</span><span>18</span><span>21</span><span>24</span>
@@ -626,51 +656,12 @@ textarea.form-input{min-height:68px;resize:none}
     </div>
   </div>
 
+
+  <div class="section-header"><span>🍽 Ernährung &amp; Trinken</span></div>
   <!-- MAHLZEITEN -->
   <div class="card mahlzeiten-card" onclick="handleMahlzeitenCardClick(event)">
     <div class="card-title">🍽 Mahlzeiten</div>
     <div id="todayEntries"></div>
-  </div>
-
-  <!-- BUDENOFALK (ein-/ausblendbar per Schieberegler, bleibt an folgenden Tagen aktiv) -->
-  <div class="card toggle-card" id="budenofalkCard">
-    <div class="toggle-card-header">
-      <div class="card-title" style="color:#7b4b1f;margin-bottom:0">💊 Budenofalk</div>
-      <label class="switch">
-        <input type="checkbox" id="budenofalkToggle" onchange="toggleBudenofalkField(this)">
-        <span class="switch-slider"></span>
-      </label>
-    </div>
-    <div class="toggle-card-body" id="budenofalkBody">
-      <div class="scale-row" style="margin-top:10px">
-        <button class="scale-btn sev-1" data-v="0" onclick="setScale(this,'budenofalk','budenofalk')">⚪<small>Keine</small></button>
-        <button class="scale-btn sev-3" data-v="3" onclick="setScale(this,'budenofalk','budenofalk')">💊<small>3 mg</small></button>
-        <button class="scale-btn sev-4" data-v="6" onclick="setScale(this,'budenofalk','budenofalk')">💊<small>6 mg</small></button>
-        <button class="scale-btn sev-5" data-v="9" onclick="setScale(this,'budenofalk','budenofalk')">💊<small>9 mg</small></button>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUPPLEMENTS (ein-/ausblendbar per Schieberegler) -->
-  <div class="card toggle-card" id="supplementsCard">
-    <div class="toggle-card-header">
-      <div class="card-title" style="color:#6b5b95;margin-bottom:0">💊 Supplements</div>
-      <label class="switch">
-        <input type="checkbox" id="supplementsToggle" onchange="toggleSupplementsField(this)">
-        <span class="switch-slider"></span>
-      </label>
-    </div>
-    <div class="toggle-card-body" id="supplementsBody">
-      <div class="akt-grid" id="supplementChipRow" style="margin-top:10px">
-        <button class="akt-tile" data-supp="🧪 Kreatin" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">🧪</span><span class="akt-tile-label">Kreatin</span><span class="akt-tile-check">✓</span></button>
-        <button class="akt-tile" data-supp="🧂 Magnesium" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">🧂</span><span class="akt-tile-label">Magnesium</span><span class="akt-tile-check">✓</span></button>
-        <button class="akt-tile" data-supp="💊 Vitamine" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">💊</span><span class="akt-tile-label">Vitamine</span><span class="akt-tile-check">✓</span></button>
-        <button class="akt-tile" data-supp="⚡ Zink" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">⚡</span><span class="akt-tile-label">Zink</span><span class="akt-tile-check">✓</span></button>
-      </div>
-      <div style="font-size:10.5px;color:var(--gray-dark);margin-top:6px">Mehrere gleichzeitig antippen, falls zusammen eingenommen</div>
-      <div class="akt-editor" id="suppEditor" style="display:none"></div>
-      <div id="supplementsList"></div>
-    </div>
   </div>
 
   <!-- WASSER -->
@@ -683,7 +674,7 @@ textarea.form-input{min-height:68px;resize:none}
         <div class="goal-subtext" id="waterGoalText">Ziel: 3.0 L</div>
       </div>
     </div>
-    <div style="margin-top:9px;font-size:11px;color:var(--gray-dark)">12 Gläser à 250 ml · über die Tropfen wischen</div>
+    <div style="margin-top:9px;font-size:11px;color:var(--gray-dark)">10 Gläser à 250 ml · über die Tropfen wischen</div>
   </div>
 
   <!-- KAFFEE -->
@@ -724,33 +715,63 @@ textarea.form-input{min-height:68px;resize:none}
     </div>
   </div>
 
+  <!-- SUPPLEMENTS (ein-/ausblendbar per Schieberegler) -->
+  <div class="card toggle-card" id="supplementsCard">
+    <div class="toggle-card-header">
+      <div class="card-title" style="color:#6b5b95;margin-bottom:0">💊 Supplements</div>
+      <label class="switch">
+        <input type="checkbox" id="supplementsToggle" onchange="toggleSupplementsField(this)">
+        <span class="switch-slider"></span>
+      </label>
+    </div>
+    <div class="toggle-card-body" id="supplementsBody">
+      <div class="akt-grid" id="supplementChipRow" style="margin-top:10px">
+        <button class="akt-tile" data-supp="🧪 Kreatin" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">🧪</span><span class="akt-tile-label">Kreatin</span><span class="akt-tile-check">✓</span></button>
+        <button class="akt-tile" data-supp="🧂 Magnesium" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">🧂</span><span class="akt-tile-label">Magnesium</span><span class="akt-tile-check">✓</span></button>
+        <button class="akt-tile" data-supp="💊 Vitamine" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">💊</span><span class="akt-tile-label">Vitamine</span><span class="akt-tile-check">✓</span></button>
+        <button class="akt-tile" data-supp="⚡ Zink" onclick="toggleSupplementPick(this)"><span class="akt-tile-icon">⚡</span><span class="akt-tile-label">Zink</span><span class="akt-tile-check">✓</span></button>
+      </div>
+      <div style="font-size:10.5px;color:var(--gray-dark);margin-top:6px">Mehrere gleichzeitig antippen, falls zusammen eingenommen</div>
+      <div class="akt-editor" id="suppEditor" style="display:none"></div>
+      <div id="supplementsList"></div>
+    </div>
+  </div>
+
+  <!-- BUDENOFALK (ein-/ausblendbar per Schieberegler, bleibt an folgenden Tagen aktiv) -->
+  <div class="card toggle-card" id="budenofalkCard">
+    <div class="toggle-card-header">
+      <div class="card-title" style="color:#7b4b1f;margin-bottom:0">💊 Budenofalk</div>
+      <label class="switch">
+        <input type="checkbox" id="budenofalkToggle" onchange="toggleBudenofalkField(this)">
+        <span class="switch-slider"></span>
+      </label>
+    </div>
+    <div class="toggle-card-body" id="budenofalkBody">
+      <div class="scale-row" style="margin-top:10px">
+        <button class="scale-btn sev-1" data-v="0" onclick="setScale(this,'budenofalk','budenofalk')">⚪<small>Keine</small></button>
+        <button class="scale-btn sev-3" data-v="3" onclick="setScale(this,'budenofalk','budenofalk')">💊<small>3 mg</small></button>
+        <button class="scale-btn sev-4" data-v="6" onclick="setScale(this,'budenofalk','budenofalk')">💊<small>6 mg</small></button>
+        <button class="scale-btn sev-5" data-v="9" onclick="setScale(this,'budenofalk','budenofalk')">💊<small>9 mg</small></button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="section-header"><span>💭 Körper &amp; Gemüt</span></div>
   <!-- TAGES-CHECK -->
   <div class="card">
     <div class="card-title">🌅 Tages-Check</div>
     <div class="check-block">
       <div class="check-block-label">😴 Schlaf</div>
-      <div class="schlaf-row" style="position:relative">
-        <button type="button" class="schlaf-hours-btn" id="schlafHoursBtn" onclick="toggleSleepPopover(event)">8 <small>Std.</small></button>
-        <span style="font-size:12px;color:var(--gray-dark)">Stunden · Qualität:</span>
-        <div class="sleep-popover" id="sleepPopover">
-          <div class="sleep-picker-wrap">
-            <div class="sleep-picker" id="sleepPicker" onscroll="onSleepScroll()" onclick="onSleepPickerClick(event)"></div>
-            <div class="sleep-picker-highlight"></div>
-            <div class="sleep-picker-unit">Std.</div>
-          </div>
-        </div>
-      </div>
+      <div style="font-size:11px;color:var(--gray-dark);margin-bottom:8px">Für Schichtdienst: beliebig viele Schlafphasen zu jeder Tageszeit — Hauptschlaf oder Nap.</div>
+      <div id="sleepSessionsList"></div>
+      <button type="button" class="btn-secondary" style="background:var(--purple-light);color:var(--purple);margin-top:2px" onclick="addSleepSession()">➕ Schlafphase hinzufügen</button>
+      <div class="akt-editor" id="sleepEditor" style="display:none"></div>
+      <div style="font-size:11.5px;color:var(--gray-dark);margin-top:9px;font-weight:600" id="sleepTotalSummary"></div>
+      <div class="sub-label" style="margin-top:12px">Schlafqualität (gesamt heute)</div>
       <div class="range-row" style="margin-top:4px">
         <input type="range" min="1" max="5" step="1" value="3" class="range-slider" id="schlafRange" oninput="setRangeScale(this,'schlafQualitaet')">
         <div class="range-value" id="schlafRangeValue">–</div>
-      </div>
-      <div class="time-field-row">
-        <div style="position:relative"><label class="form-label" style="font-size:10px">🌅 Aufgestanden</label><button type="button" class="time-picker-btn" id="wachZeitBtn" onclick="openTimeWheelPopover('wachZeit',this)">–:–</button>
-          <div class="time-wheel-popover" id="timeWheelPopover-wachZeit"></div>
-        </div>
-        <div style="position:relative"><label class="form-label" style="font-size:10px">🌙 Zu Bett</label><button type="button" class="time-picker-btn" id="bettZeitBtn" onclick="openTimeWheelPopover('bettZeit',this)">–:–</button>
-          <div class="time-wheel-popover" id="timeWheelPopover-bettZeit"></div>
-        </div>
       </div>
     </div>
     <div class="check-block">
@@ -772,6 +793,8 @@ textarea.form-input{min-height:68px;resize:none}
         <input type="range" min="1" max="5" step="1" value="3" class="range-slider" id="stressRange" oninput="setRangeScale(this,'stressLevel')">
         <div class="range-value" id="stressRangeValue">–</div>
       </div>
+      <input type="text" class="form-input" id="stressFactorInput" placeholder="Auslöser? z.B. Arbeit, Beziehung, Schlafmangel…" style="margin-top:9px" oninput="onStressFactorInput(this)" onblur="commitStressFactorMemory(this)">
+      <div class="food-suggestions" id="stressFactorSuggestions"></div>
     </div>
     <div class="check-block">
       <div class="check-block-label">⚡ Energie heute</div>
@@ -808,12 +831,35 @@ textarea.form-input{min-height:68px;resize:none}
   </div>
 
 
+  <!-- BEZIEHUNG (ein-/ausblendbar per Schieberegler) -->
+  <div class="card toggle-card" id="beziehungCard">
+    <div class="toggle-card-header">
+      <div class="card-title" style="color:#c2185b;margin-bottom:0">❤️ Beziehung</div>
+      <label class="switch">
+        <input type="checkbox" id="beziehungToggle" onchange="toggleBeziehungField(this)">
+        <span class="switch-slider"></span>
+      </label>
+    </div>
+    <div class="toggle-card-body" id="beziehungBody">
+      <div style="font-size:11px;color:var(--gray-dark);margin:10px 0 6px">Wie fühlst du dich heute in der Beziehung?</div>
+      <div class="range-row">
+        <input type="range" min="1" max="10" step="1" value="5" class="range-slider" id="beziehungRange" oninput="setBeziehungRange(this)">
+        <div class="range-value" id="beziehungRangeValue">–</div>
+      </div>
+      <textarea class="form-input" id="beziehungNotes" placeholder="Stichworte (optional)… z.B. gutes Gespräch, Streit, wenig Zeit zusammen" rows="2" style="margin-top:10px" oninput="saveBeziehungNotes()"></textarea>
+    </div>
+  </div>
+
   <!-- TAGESNOTIZ -->
   <div class="card">
     <div class="card-title">📝 Tagesnotiz</div>
     <textarea class="form-input" id="tagesnotiz" placeholder="Wie war dein Tag?" rows="3" oninput="saveTagesnotiz()"></textarea>
   </div>
 
+  <div id="hiddenToggleCardsZone"></div>
+
+
+  <div class="section-header"><span>🧠 Auswertung</span></div>
   <!-- ERNÄHRUNGSANALYSE -->
   <div class="card" id="analyseCard">
     <div class="card-title purple">🧠 Ernährungs-Analyse</div>
@@ -834,6 +880,14 @@ textarea.form-input{min-height:68px;resize:none}
     <div style="font-size:12px;color:var(--gray-dark);margin-bottom:10px">Passend zu deinen bisherigen Werten heute, glutenfrei &amp; Low-FODMAP.</div>
     <button class="btn-secondary" style="background:var(--purple-light);color:var(--purple)" onclick="generateRecipeSuggestions()">✨ Vorschlag generieren</button>
     <div id="recipeBody" style="margin-top:10px;display:none"></div>
+  </div>
+
+  <!-- EINKAUFSLISTE (KI-Vorschlag basierend auf gut vertragenen Mahlzeiten) -->
+  <div class="card" id="shoppingListCard">
+    <div class="card-title purple">🛒 Einkaufsliste</div>
+    <div style="font-size:12px;color:var(--gray-dark);margin-bottom:10px">KI-Vorschlag auf Basis der Lebensmittel, die du zuletzt gut vertragen hast.</div>
+    <button class="btn-secondary" style="background:var(--purple-light);color:var(--purple)" onclick="generateShoppingList()">✨ Einkaufsliste vorschlagen</button>
+    <div id="shoppingListBody" style="margin-top:10px;display:none"></div>
   </div>
 </div>
 
@@ -1012,7 +1066,7 @@ textarea.form-input{min-height:68px;resize:none}
         <code>schlaf:7.5:4</code> (Stunden:Qualität 1-5, Qualität optional)<br>
         <code>schritte:9200</code> · <code>kalorien:2100</code> (aktiv verbrannt)<br>
         <code>gewicht:78.4</code> (kg) · <code>ruhepuls:54</code> (bpm) · <code>training:45</code> (Min.)<br>
-        <code>wach:07:15</code> · <code>bett:23:00</code> (für den 🌅 Tagesverlauf — aus „Schlafanalyse abrufen" in Kurzbefehle: Beginn/Ende der letzten Nacht als HH:MM formatieren)<br>
+        <code>wach:07:15</code> · <code>bett:23:00</code> (legt/aktualisiert automatisch eine "Hauptschlaf"-Schlafphase — aus „Schlafanalyse abrufen" in Kurzbefehle: Beginn/Ende der letzten Nacht als HH:MM formatieren. Naps trägst du manuell im Schlaf-Bereich ein.)<br>
         <code>hrv:52</code> (Herzfrequenzvariabilität in ms — <b>Annäherung an Stress</b>, kein echter Garmin-Stress-Wert, siehe Hinweis unten)
       </div>
     </div>
@@ -1259,6 +1313,7 @@ function renderHeaderDate(){
 }
 function renderDay(){
   renderTagesCheck();
+  renderSleep();
   renderWater();
   renderCaffeine();
   renderStuhlgang();
@@ -1368,6 +1423,13 @@ async function renderTimeline(){
   track.style.background=buildDayGradient(sun.sunrise,sun.sunset);
 
   let trackHtml='';
+  (d.sleepSessions||[]).forEach(s=>{
+    const startH=timeToHour(s.start), endHraw=timeToHour(s.end);
+    if(startH==null||endHraw==null) return;
+    const endH=endHraw<=startH?24:endHraw; // über Mitternacht: bis Tagesende zeigen
+    const icon=s.type==='Nap'?'💤':'😴';
+    trackHtml+=`<div class="timeline-sleep-overlay" style="left:${tlPct(startH)}%;width:${(tlPct(endH)-tlPct(startH)).toFixed(2)}%" title="${s.type}: ${s.start}–${s.end}"><span class="timeline-sleep-icon">${icon}</span></div>`;
+  });
   if(d.arbeitBeginn&&d.arbeitEnde){
     const b=timeToHour(d.arbeitBeginn), e=timeToHour(d.arbeitEnde);
     if(b!=null&&e!=null&&e>b){
@@ -1405,21 +1467,11 @@ async function renderTimeline(){
   });
   markersEl.innerHTML=html;
 
-  const subtrack=document.getElementById('timelineSubtrack');
-  if(subtrack){
-    const wa=timeToHour(d.wachZeit), be=timeToHour(d.bettZeit);
-    if(wa!=null&&be!=null&&be>wa){
-      subtrack.innerHTML=`<div class="timeline-subtrack-fill" style="left:${tlPct(wa)}%;width:${(tlPct(be)-tlPct(wa)).toFixed(2)}%" title="Wach: ${d.wachZeit}–${d.bettZeit}"></div>`;
-    } else {
-      subtrack.innerHTML='';
-    }
-  }
-
   const legend=document.getElementById('timelineLegend');
   if(legend){
     const items=[['#e0a95c','☀️ Sonne'],['#3b82f6','🍽 Mahlzeit'],['#ef4444','🏃 Aktivität'],['#8d6e63','🚽 Stuhlgang'],['#8b5cf6','💊 Supplement']];
     if(d.arbeitBeginn&&d.arbeitEnde) items.push(['rgba(140,140,140,.6)','💼 Arbeit']);
-    items.push(['#9aa1ab','⬆️ Wachzeit']);
+    items.push(['#2a2d3a','😴 Schlafphase']);
     legend.innerHTML=items.map(([c,l])=>`<span class="tl-legend-item"><span class="tl-legend-dot" style="background:${c}"></span>${l}</span>`).join('');
   }
 }
@@ -1443,15 +1495,20 @@ function showTimelineDetails(){
   const entries=(db.entries||[]).filter(e=>e.date===dateKey);
   const stuhlgang=d.stuhlgang||[];
   const aktItems=(d.aktivitaet&&d.aktivitaet.items)||[];
+  const sleepSessions=d.sleepSessions||[];
+  const suppItems=(d.supplements&&d.supplements.items)||[];
 
   const rows=[];
-  if(d.wachZeit) rows.push({t:d.wachZeit,txt:'⬆️ Aufgestanden'});
+  sleepSessions.forEach(s=>{
+    const dateLabel=(s.date&&s.date!==dateKey)?formatShortDate(s.date)+' ':'';
+    rows.push({t:s.start,txt:`😴 ${s.type} (${dateLabel}${s.start}–${s.end}, ${sessionDurationHoursV2(s).toFixed(1)} Std.)`});
+  });
   entries.forEach(e=>rows.push({t:e.time,txt:`🍽 ${e.type||'Mahlzeit'}${e.food?': '+e.food:''}`}));
   aktItems.forEach(it=>rows.push({t:it.time||'--:--',txt:`🏃 ${it.act||'Aktivität'}${it.min?` (${it.min} Min., ${RANGE_LABELS_AKT[it.intensity]||it.intensity||''})`:''}`}));
+  suppItems.forEach(it=>{ const p=it.name.split(' '); rows.push({t:it.time,txt:`${p[0]} ${p.slice(1).join(' ')}`}); });
   stuhlgang.forEach(s=>rows.push({t:s.time,txt:'🚽 Stuhlgang'}));
   if(d.arbeitBeginn) rows.push({t:d.arbeitBeginn,txt:'💼 Arbeitsbeginn'});
   if(d.arbeitEnde) rows.push({t:d.arbeitEnde,txt:'💼 Arbeitsende'});
-  if(d.bettZeit) rows.push({t:d.bettZeit,txt:'🌙 Zu Bett'});
   rows.sort((a,b)=>(a.t||'').localeCompare(b.t||''));
 
   const body=document.getElementById('timelineDetailBody');
@@ -1489,6 +1546,7 @@ window.onload=function(){
   handleURLHealth();   // Automatisierung: Schlaf via Kurzbefehle aus Health/Garmin
   updateAiStatus();
   applyBudenofalkVisibility();
+  applyBeziehungVisibility();
   applyHealthStatsVisibility();
   applyKaffeeCardVisibility();
   applySupplementsVisibility();
@@ -1527,6 +1585,7 @@ function handleURLHealth(){
   history.replaceState(null,'',window.location.pathname+window.location.search);
   const segments=hash.slice(8).split('&').filter(Boolean);
   const applied=[];
+  let autoSleepStart=null, autoSleepEnd=null;
   segments.forEach(seg=>{
     const parts=seg.split(':');
     const metric=parts[0];
@@ -1557,17 +1616,29 @@ function handleURLHealth(){
       if(!isNaN(v)){ saveDayField('trainingsMinuten',v); applied.push(`🏋️ ${v} Min. Training`); }
     } else if(metric==='wach'){
       const v=parts[1];
-      if(v&&/^\d{1,2}:\d{2}$/.test(v)){ saveDayField('wachZeit',v); applied.push(`⬆️ Aufgestanden ${v}`); }
+      if(v&&/^\d{1,2}:\d{2}$/.test(v)) autoSleepEnd=v;
     } else if(metric==='bett'){
       const v=parts[1];
-      if(v&&/^\d{1,2}:\d{2}$/.test(v)){ saveDayField('bettZeit',v); applied.push(`🌙 Zu Bett ${v}`); }
+      if(v&&/^\d{1,2}:\d{2}$/.test(v)) autoSleepStart=v;
     } else if(metric==='hrv'){
       const v=parseFloat(parts[1]);
       if(!isNaN(v)){ saveDayField('hrv',v); applied.push(`💓 ${v} ms HRV`); }
     }
   });
+  if(autoSleepStart||autoSleepEnd){
+    const d=getTodayData();
+    if(!d.sleepSessions) d.sleepSessions=[];
+    let session=d.sleepSessions.find(s=>s.type==='Hauptschlaf');
+    if(!session){ session={type:'Hauptschlaf',start:'23:00',end:'07:00'}; d.sleepSessions.push(session); }
+    if(autoSleepStart) session.start=autoSleepStart;
+    if(autoSleepEnd) session.end=autoSleepEnd;
+    d.schlafStunden=computeTotalSleepHours(d.sleepSessions);
+    save();
+    applied.push(`😴 Hauptschlaf ${session.start}–${session.end}`);
+  }
   if(applied.length){
     renderTagesCheck();
+    renderSleep();
     renderHealthStats();
     renderTimeline();
     toast('✅ Health-Daten übernommen: '+applied.join(' · '));
@@ -1591,19 +1662,22 @@ function copyHealthUrl(){
 // ── TAGES-CHECK ────────────────────────────────────────────────────────
 function renderTagesCheck(){
   const d=getTodayData();
-  const btn=document.getElementById('schlafHoursBtn');
-  if(btn) btn.innerHTML=`${d.schlafStunden!=null?d.schlafStunden:8} <small>Std.</small>`;
   const schlafVal=d.schlafQualitaet||3;
   const schlafRange=document.getElementById('schlafRange');
   if(schlafRange){ schlafRange.value=schlafVal; updateRangeDisplay(schlafRange,'schlafQualitaet',schlafVal); }
-  document.getElementById('wachZeitBtn').textContent=d.wachZeit||'–:–';
-  document.getElementById('bettZeitBtn').textContent=d.bettZeit||'–:–';
   document.getElementById('arbeitBeginn').value=d.arbeitBeginn||'';
   document.getElementById('arbeitEnde').value=d.arbeitEnde||'';
   if(d.arbeit) applyWork(d.arbeit);
   const stressVal=d.stressLevel||3;
   const stressRange=document.getElementById('stressRange');
   if(stressRange){ stressRange.value=stressVal; updateRangeDisplay(stressRange,'stressLevel',stressVal); }
+  const stressFactorEl=document.getElementById('stressFactorInput');
+  if(stressFactorEl) stressFactorEl.value=d.stressFactors||'';
+  const beziehungVal=d.beziehungScore||5;
+  const beziehungRange=document.getElementById('beziehungRange');
+  if(beziehungRange){ beziehungRange.value=beziehungVal; setBeziehungRange(beziehungRange); }
+  const beziehungNotesEl=document.getElementById('beziehungNotes');
+  if(beziehungNotesEl) beziehungNotesEl.value=d.beziehungNotes||'';
   const energieVal=d.energieLevel||3;
   const energieRange=document.getElementById('energieRange');
   if(energieRange){ energieRange.value=energieVal; updateRangeDisplay(energieRange,'energieLevel',energieVal); }
@@ -1618,176 +1692,246 @@ function renderTagesCheck(){
   updateStatsRow();
 }
 // ── SCHLAF: Kompakter Button öffnet iPhone-artigen Scroll-Wheel-Picker ──
-const SLEEP_MIN=0, SLEEP_MAX=14, SLEEP_STEP=0.5, SLEEP_ITEM_H=40;
-function buildSleepPicker(){
-  const picker=document.getElementById('sleepPicker');
-  if(!picker||picker.dataset.built) return;
-  let html='<div class="sleep-picker-pad"></div>';
-  for(let v=SLEEP_MIN;v<=SLEEP_MAX+0.001;v+=SLEEP_STEP){
-    html+=`<div class="sleep-picker-item" data-v="${v.toFixed(1)}">${v.toFixed(1)}</div>`;
-  }
-  html+='<div class="sleep-picker-pad"></div>';
-  picker.innerHTML=html;
-  picker.dataset.built='1';
-}
-function sleepIdxFromVal(val){
-  return Math.round((Math.min(Math.max(val,SLEEP_MIN),SLEEP_MAX)-SLEEP_MIN)/SLEEP_STEP);
-}
-function setSleepPickerValue(val,animate){
-  const picker=document.getElementById('sleepPicker');
-  if(!picker) return;
-  const idx=sleepIdxFromVal(val);
-  picker.scrollTo({top:idx*SLEEP_ITEM_H,behavior:animate?'smooth':'auto'});
-  highlightSleepCenter(idx);
-}
-function highlightSleepCenter(idx){
-  const picker=document.getElementById('sleepPicker');
-  if(!picker) return;
-  picker.querySelectorAll('.sleep-picker-item').forEach((el,i)=>el.classList.toggle('center',i===idx));
-}
-function toggleSleepPopover(e){
-  if(e) e.stopPropagation();
-  const pop=document.getElementById('sleepPopover');
-  const opening=!pop.classList.contains('open');
-  pop.classList.toggle('open',opening);
-  if(opening){
-    buildSleepPicker();
-    const d=getTodayData();
-    setTimeout(()=>setSleepPickerValue(d.schlafStunden!=null?d.schlafStunden:8,false),0);
-  }
-}
-document.addEventListener('click',function(e){
-  const pop=document.getElementById('sleepPopover');
-  const btn=document.getElementById('schlafHoursBtn');
-  if(pop&&pop.classList.contains('open')&&!pop.contains(e.target)&&e.target!==btn){
-    pop.classList.remove('open');
-  }
-});
 document.addEventListener('pointermove',moveWaterDrag);
 document.addEventListener('pointerup',endWaterDrag);
 document.addEventListener('pointercancel',endWaterDrag);
-let sleepScrollTimer=null;
-function onSleepScroll(){
-  const picker=document.getElementById('sleepPicker');
-  const idx=Math.round(picker.scrollTop/SLEEP_ITEM_H);
-  highlightSleepCenter(idx);
-  clearTimeout(sleepScrollTimer);
-  sleepScrollTimer=setTimeout(()=>{
-    const val=Math.round((SLEEP_MIN+idx*SLEEP_STEP)*10)/10;
-    saveDayField('schlafStunden',val);
-    renderTagesCheck();
-  },140);
+
+// ── SCHLAFPHASEN — beliebig viele pro Tag (Hauptschlaf, Nap) ──
+let sleepEditorState=null;
+function formatShortDate(dateKeyStr){
+  const [y,m,dd]=dateKeyStr.split('-').map(Number);
+  const days=['So','Mo','Di','Mi','Do','Fr','Sa'];
+  const dt=new Date(y,m-1,dd);
+  return `${days[dt.getDay()]} ${String(dd).padStart(2,'0')}.${String(m).padStart(2,'0')}`;
 }
-function onSleepPickerClick(e){
-  const item=e.target.closest('.sleep-picker-item');
-  if(!item) return;
-  const idx=Array.prototype.indexOf.call(item.parentElement.children,item)-1;
-  setSleepPickerValue(SLEEP_MIN+idx*SLEEP_STEP,true);
-  const val=Math.round((SLEEP_MIN+idx*SLEEP_STEP)*10)/10;
-  saveDayField('schlafStunden',val);
-  renderTagesCheck();
+function addDaysToDateKey(dateKeyStr,delta){
+  const [y,m,dd]=dateKeyStr.split('-').map(Number);
+  const dt=new Date(y,m-1,dd);
+  dt.setDate(dt.getDate()+delta);
+  return dateKeyFromDate(dt);
+}
+function dateTimeToMs(dateKeyStr,timeStr){
+  const [y,m,dd]=dateKeyStr.split('-').map(Number);
+  const [hh,mm]=(timeStr||'0:0').split(':').map(Number);
+  return new Date(y,m-1,dd,hh,mm).getTime();
+}
+function sessionDurationHoursV2(s){
+  const endDate=s.endDate||s.date;
+  const startMs=dateTimeToMs(s.date,s.start);
+  let endMs=dateTimeToMs(endDate,s.end);
+  if(endMs<=startMs) endMs+=24*3600*1000; // Sicherheitsnetz, falls Daten inkonsistent
+  return Math.round((endMs-startMs)/3600000*10)/10;
+}
+function computeTotalSleepHours(sessions){
+  return Math.round((sessions||[]).reduce((sum,s)=>sum+sessionDurationHoursV2(s),0)*10)/10;
+}
+function smartEndDate(startDate,start,end){
+  const sH=timeToHour(start), eH=timeToHour(end);
+  if(sH!=null&&eH!=null&&eH<=sH) return addDaysToDateKey(startDate,1);
+  return startDate;
+}
+function addSleepSession(){
+  const date=viewKey();
+  sleepEditorState={idx:null, type:'Hauptschlaf', date, start:'23:00', endDate:addDaysToDateKey(date,1), end:'07:00'};
+  renderSleepEditor();
+  const editor=document.getElementById('sleepEditor');
+  if(editor) editor.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function editSleepSession(idx){
+  const d=getTodayData();
+  const it=d.sleepSessions&&d.sleepSessions[idx];
+  if(!it) return;
+  const date=it.date||viewKey();
+  const endDate=it.endDate||smartEndDate(date,it.start,it.end);
+  sleepEditorState={idx, type:it.type, date, start:it.start, endDate, end:it.end};
+  renderSleepEditor();
+}
+function setSleepEditorType(type){ if(sleepEditorState){ sleepEditorState.type=type; renderSleepEditor(); } }
+function setSleepEditorDate(val){
+  if(!sleepEditorState) return;
+  sleepEditorState.date=val;
+  if(sleepEditorState.endDate<val) sleepEditorState.endDate=val;
+  updateSleepDurationPreview();
+}
+function setSleepEditorEndDate(val){ if(sleepEditorState){ sleepEditorState.endDate=val; updateSleepDurationPreview(); } }
+function cancelSleepEditor(){ sleepEditorState=null; renderSleepEditor(); }
+function saveSleepEditor(){
+  if(!sleepEditorState) return;
+  const d=getTodayData();
+  if(!d.sleepSessions) d.sleepSessions=[];
+  const entry={type:sleepEditorState.type, date:sleepEditorState.date||viewKey(), start:sleepEditorState.start,
+    endDate:sleepEditorState.endDate||sleepEditorState.date, end:sleepEditorState.end};
+  if(sleepEditorState.idx!=null) d.sleepSessions[sleepEditorState.idx]=entry;
+  else d.sleepSessions.push(entry);
+  d.schlafStunden=computeTotalSleepHours(d.sleepSessions);
+  save();
+  sleepEditorState=null;
+  renderSleepEditor();
+  renderSleepSessionsList();
+  renderTimeline();
+  toast('✅ Schlafphase gespeichert');
+}
+function removeSleepSession(idx){
+  const d=getTodayData();
+  if(!d.sleepSessions) return;
+  d.sleepSessions.splice(idx,1);
+  d.schlafStunden=computeTotalSleepHours(d.sleepSessions);
+  save();
+  if(sleepEditorState&&sleepEditorState.idx===idx){ sleepEditorState=null; }
+  renderSleepEditor();
+  renderSleepSessionsList();
+  renderTimeline();
 }
 
-// ── UHRZEIT-WHEEL-PICKER (Aufgestanden / Zu Bett) — als Popover, iPhone-Wecker-Stil ──
-const TW_ITEM_H=38;
-function buildTimeWheel(id,max){
+// ── Kompaktes iOS-Style Scrollrad für Uhrzeiten, direkt im Editor eingebettet ──
+const MW_ITEM_H=34;
+function buildMiniWheel(id,max){
   const el=document.getElementById(id);
   if(!el||el.dataset.built) return;
-  let html='<div class="time-wheel-pad"></div>';
-  for(let v=0;v<max;v++){ html+=`<div class="time-wheel-item" data-v="${v}">${String(v).padStart(2,'0')}</div>`; }
-  html+='<div class="time-wheel-pad"></div>';
+  let html='<div class="mini-wheel-pad"></div>';
+  for(let v=0;v<max;v++){ html+=`<div class="mini-wheel-item" data-v="${v}">${String(v).padStart(2,'0')}</div>`; }
+  html+='<div class="mini-wheel-pad"></div>';
   el.innerHTML=html;
   el.dataset.built='1';
 }
-function highlightTimeWheelCenter(id,idx){
+function highlightMiniWheel(id,idx){
   const el=document.getElementById(id);
   if(!el) return;
-  el.querySelectorAll('.time-wheel-item').forEach((it,i)=>it.classList.toggle('center',i===idx));
+  el.querySelectorAll('.mini-wheel-item').forEach((it,i)=>it.classList.toggle('center',i===idx));
 }
-function setTimeWheelValue(id,val,animate){
+function setMiniWheelValue(id,val,animate){
   const el=document.getElementById(id);
   if(!el) return;
-  el.scrollTo({top:val*TW_ITEM_H,behavior:animate?'smooth':'auto'});
-  highlightTimeWheelCenter(id,val);
+  el.scrollTo({top:val*MW_ITEM_H,behavior:animate?'smooth':'auto'});
+  highlightMiniWheel(id,val);
 }
-function onTimeWheelClick(e,id){
-  const item=e.target.closest('.time-wheel-item');
+let sleepWheelScrollTimer=null;
+function onSleepWheelScroll(which,unit){
+  const id=`sleepWheel${which==='start'?'Start':'End'}${unit==='hour'?'H':'M'}`;
+  const el=document.getElementById(id);
+  if(!el) return;
+  const idx=Math.round(el.scrollTop/MW_ITEM_H);
+  highlightMiniWheel(id,idx);
+  clearTimeout(sleepWheelScrollTimer);
+  sleepWheelScrollTimer=setTimeout(()=>commitSleepWheelValue(which),120);
+}
+function onSleepWheelClick(e,id){
+  const item=e.target.closest('.mini-wheel-item');
   if(!item) return;
   const idx=parseInt(item.dataset.v);
-  setTimeWheelValue(id,idx,true);
-  const field=id.replace(/^timeWheel(Hour|Minute)-/,'');
-  clearTimeout(twScrollTimer);
-  twScrollTimer=setTimeout(()=>commitTimeWheelValue(field),150);
+  setMiniWheelValue(id,idx,true);
+  const which=id.includes('Start')?'start':'end';
+  clearTimeout(sleepWheelScrollTimer);
+  sleepWheelScrollTimer=setTimeout(()=>commitSleepWheelValue(which),150);
 }
-let twScrollTimer=null;
-function onTimeWheelScroll(field,which){
-  const id=(which==='hour'?'timeWheelHour-':'timeWheelMinute-')+field;
-  const el=document.getElementById(id);
-  if(!el) return;
-  const idx=Math.round(el.scrollTop/TW_ITEM_H);
-  highlightTimeWheelCenter(id,idx);
-  clearTimeout(twScrollTimer);
-  twScrollTimer=setTimeout(()=>commitTimeWheelValue(field),120);
-}
-function commitTimeWheelValue(field){
-  const hEl=document.getElementById('timeWheelHour-'+field);
-  const mEl=document.getElementById('timeWheelMinute-'+field);
+function commitSleepWheelValue(which){
+  if(!sleepEditorState) return;
+  const hId=`sleepWheel${which==='start'?'Start':'End'}H`;
+  const mId=`sleepWheel${which==='start'?'Start':'End'}M`;
+  const hEl=document.getElementById(hId), mEl=document.getElementById(mId);
   if(!hEl||!mEl) return;
-  const hIdx=Math.max(0,Math.round(hEl.scrollTop/TW_ITEM_H));
-  const mIdx=Math.max(0,Math.round(mEl.scrollTop/TW_ITEM_H));
-  const val=`${String(hIdx).padStart(2,'0')}:${String(mIdx).padStart(2,'0')}`;
-  saveDayField(field,val);
-  const btn=document.getElementById(field+'Btn');
-  if(btn) btn.textContent=val;
-  renderTimeline();
-}
-function openTimeWheelPopover(field,btnEl){
-  if(btnEl&&btnEl.stopPropagation) {} // no-op safeguard
-  document.querySelectorAll('.time-wheel-popover.open').forEach(p=>{
-    if(p.id!=='timeWheelPopover-'+field) p.classList.remove('open');
-  });
-  const pop=document.getElementById('timeWheelPopover-'+field);
-  if(!pop) return;
-  const opening=!pop.classList.contains('open');
-  if(!opening){ pop.classList.remove('open'); return; }
-  pop.classList.add('open');
-  const hourId='timeWheelHour-'+field, minuteId='timeWheelMinute-'+field;
-  if(!pop.dataset.built){
-    pop.innerHTML=`
-      <div class="time-wheel-wrap">
-        <div class="time-wheel" id="${hourId}" onscroll="onTimeWheelScroll('${field}','hour')" onclick="onTimeWheelClick(event,'${hourId}')"></div>
-        <div class="time-wheel-colon">:</div>
-        <div class="time-wheel" id="${minuteId}" onscroll="onTimeWheelScroll('${field}','minute')" onclick="onTimeWheelClick(event,'${minuteId}')"></div>
-        <div class="time-wheel-highlight"></div>
-      </div>
-      <button type="button" class="btn-secondary" style="margin-top:0" onclick="closeTimeWheelPopover('${field}')">✅ Fertig</button>`;
-    pop.dataset.built='1';
+  const hh=Math.max(0,Math.round(hEl.scrollTop/MW_ITEM_H));
+  const mm=Math.max(0,Math.round(mEl.scrollTop/MW_ITEM_H));
+  const val=`${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}`;
+  if(which==='start'){
+    sleepEditorState.start=val;
+    if(sleepEditorState.endDate<sleepEditorState.date) sleepEditorState.endDate=sleepEditorState.date;
+  } else {
+    sleepEditorState.end=val;
   }
-  buildTimeWheel(hourId,24);
-  buildTimeWheel(minuteId,60);
-  const d=getTodayData();
-  const current=d[field]||(field==='wachZeit'?'07:00':'23:00');
-  const [hh,mm]=current.split(':').map(Number);
+  updateSleepDurationPreview();
+}
+function renderSleepEditor(){
+  const box=document.getElementById('sleepEditor');
+  if(!box) return;
+  if(!sleepEditorState){ box.style.display='none'; box.innerHTML=''; return; }
+  box.style.display='block';
+  const types=['Hauptschlaf','Nap'];
+  const typeBtns=types.map(t=>`<button type="button" class="chip${sleepEditorState.type===t?' selected':''}" onclick="setSleepEditorType('${t}')">${t}</button>`).join('');
+  box.innerHTML=`
+    <div class="sub-label">Art</div>
+    <div class="chip-row">${typeBtns}</div>
+
+    <div class="sleep-editor-card">
+      <div class="sleep-editor-cols">
+        <div class="sleep-editor-col">
+          <div class="sleep-editor-col-label">🌙 Einschlafen</div>
+          <input type="date" class="sleep-date-input" value="${sleepEditorState.date||viewKey()}" oninput="setSleepEditorDate(this.value)">
+          <div class="mini-wheel-wrap">
+            <div class="mini-wheel" id="sleepWheelStartH" onscroll="onSleepWheelScroll('start','hour')" onclick="onSleepWheelClick(event,'sleepWheelStartH')"></div>
+            <div class="mini-wheel-colon">:</div>
+            <div class="mini-wheel" id="sleepWheelStartM" onscroll="onSleepWheelScroll('start','minute')" onclick="onSleepWheelClick(event,'sleepWheelStartM')"></div>
+            <div class="mini-wheel-highlight"></div>
+          </div>
+        </div>
+        <div class="sleep-editor-arrow">→</div>
+        <div class="sleep-editor-col">
+          <div class="sleep-editor-col-label">☀️ Aufwachen</div>
+          <input type="date" class="sleep-date-input" value="${sleepEditorState.endDate||sleepEditorState.date||viewKey()}" oninput="setSleepEditorEndDate(this.value)">
+          <div class="mini-wheel-wrap">
+            <div class="mini-wheel" id="sleepWheelEndH" onscroll="onSleepWheelScroll('end','hour')" onclick="onSleepWheelClick(event,'sleepWheelEndH')"></div>
+            <div class="mini-wheel-colon">:</div>
+            <div class="mini-wheel" id="sleepWheelEndM" onscroll="onSleepWheelScroll('end','minute')" onclick="onSleepWheelClick(event,'sleepWheelEndM')"></div>
+            <div class="mini-wheel-highlight"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sleep-duration-badge" id="sleepDurationPreview">– Std.<small>Schlafdauer</small></div>
+    </div>
+
+    <button class="btn-primary" style="margin-top:14px" onclick="saveSleepEditor()">✅ Speichern</button>
+    <button class="btn-secondary" style="margin-top:6px;background:var(--gray);color:var(--gray-dark)" onclick="cancelSleepEditor()">Abbrechen</button>`;
+
+  buildMiniWheel('sleepWheelStartH',24);
+  buildMiniWheel('sleepWheelStartM',60);
+  buildMiniWheel('sleepWheelEndH',24);
+  buildMiniWheel('sleepWheelEndM',60);
+  const [sh,sm]=(sleepEditorState.start||'23:00').split(':').map(Number);
+  const [eh,em]=(sleepEditorState.end||'07:00').split(':').map(Number);
   setTimeout(()=>{
-    setTimeWheelValue(hourId,hh||0,false);
-    setTimeWheelValue(minuteId,mm||0,false);
+    setMiniWheelValue('sleepWheelStartH',sh||0,false);
+    setMiniWheelValue('sleepWheelStartM',sm||0,false);
+    setMiniWheelValue('sleepWheelEndH',eh||0,false);
+    setMiniWheelValue('sleepWheelEndM',em||0,false);
+    updateSleepDurationPreview();
   },0);
 }
-function closeTimeWheelPopover(field){
-  commitTimeWheelValue(field);
-  const pop=document.getElementById('timeWheelPopover-'+field);
-  if(pop) pop.classList.remove('open');
+function updateSleepDurationPreview(){
+  const el=document.getElementById('sleepDurationPreview');
+  if(!el||!sleepEditorState) return;
+  const dur=sessionDurationHoursV2(sleepEditorState);
+  el.innerHTML=`${dur.toFixed(1)} Std.<small>Schlafdauer</small>`;
 }
-document.addEventListener('click',function(e){
-  document.querySelectorAll('.time-wheel-popover.open').forEach(pop=>{
-    const field=pop.id.replace('timeWheelPopover-','');
-    const btn=document.getElementById(field+'Btn');
-    if(!pop.contains(e.target)&&e.target!==btn){
-      commitTimeWheelValue(field);
-      pop.classList.remove('open');
-    }
-  });
-});
+function renderSleepSessionsList(){
+  const d=getTodayData();
+  const sessions=d.sleepSessions||[];
+  const container=document.getElementById('sleepSessionsList');
+  if(container){
+    container.innerHTML=sessions.map((s,idx)=>{
+      const dur=sessionDurationHoursV2(s);
+      const icon=s.type==='Nap'?'💤':'😴';
+      const dateLabel=(s.date&&s.date!==viewKey())?formatShortDate(s.date)+' · ':'';
+      const crossesDay=s.endDate&&s.endDate!==s.date;
+      return `
+      <div class="akt-row" onclick="editSleepSession(${idx})">
+        <div class="akt-row-icon">${icon}</div>
+        <div class="akt-row-info">
+          <span class="akt-row-name">${s.type}</span>
+          <span class="akt-row-meta">${dateLabel}${s.start}${crossesDay?' → '+formatShortDate(s.endDate)+' ':'–'}${s.end} · ${dur.toFixed(1)} Std.</span>
+        </div>
+        <button type="button" class="akt-row-del" onclick="event.stopPropagation();removeSleepSession(${idx})">−</button>
+      </div>`;
+    }).join('');
+  }
+  const total=computeTotalSleepHours(sessions);
+  const summary=document.getElementById('sleepTotalSummary');
+  if(summary) summary.textContent=sessions.length?`Gesamt: ${total} Std. Schlaf heute (${sessions.length} Phase${sessions.length>1?'n':''})`:'Noch keine Schlafphase erfasst.';
+}
+function renderSleep(){
+  sleepEditorState=null;
+  renderSleepEditor();
+  renderSleepSessionsList();
+}
 
 function applyScaleBtns(btns,val){
   btns.forEach(b=>{b.classList.remove('sel');if(parseInt(b.dataset.v)===val) b.classList.add('sel');});
@@ -1833,6 +1977,32 @@ function setRangeScale(input,field){
   saveDayField(field,val);
   updateRangeDisplay(input,field,val);
   updateStatsRow();
+}
+const BEZIEHUNG_LABELS={1:'Sehr schlecht',2:'Schlecht',3:'Schlecht',4:'Eher schlecht',5:'Neutral',6:'Neutral',7:'Eher gut',8:'Gut',9:'Sehr gut',10:'Ausgezeichnet'};
+function beziehungColor(val){
+  const hue=Math.round((val-1)/9*120); // 0=rot .. 120=grün
+  return `hsl(${hue},62%,44%)`;
+}
+function setBeziehungRange(input){
+  const val=parseInt(input.value);
+  saveDayField('beziehungScore',val);
+  const color=beziehungColor(val);
+  const label=BEZIEHUNG_LABELS[val]||'';
+  const pct=(val-1)/9*100;
+  input.style.setProperty('--range-color',color);
+  input.style.background=`linear-gradient(to right, ${color} ${pct}%, #e2e4e8 ${pct}%)`;
+  const valueEl=document.getElementById('beziehungRangeValue');
+  if(valueEl){
+    valueEl.innerHTML=`<span class="range-value-num">${val}</span><span class="range-value-label">${label}</span>`;
+    valueEl.style.background=color+'22';
+    valueEl.style.color=color;
+    valueEl.classList.remove('pop');
+    void valueEl.offsetWidth;
+    valueEl.classList.add('pop');
+  }
+}
+function saveBeziehungNotes(){
+  saveDayField('beziehungNotes',document.getElementById('beziehungNotes').value);
 }
 function applyWork(val){
   const cls={'Büro':'sel-buero','Homeoffice':'sel-homeoffice','Fliegen':'sel-fliegen','Frei':'sel-frei'};
@@ -2121,7 +2291,7 @@ function renderWater(){
   const key=viewKey(),val=(db.water||{})[key]||0;
   const row=document.getElementById('waterRow');
   row.innerHTML='';
-  for(let i=1;i<=12;i++){
+  for(let i=1;i<=10;i++){
     const pct=Math.round(Math.min(1,Math.max(0,val-(i-1)))*100);
     const drop=document.createElement('span');
     drop.className='water-drop';
@@ -2138,7 +2308,7 @@ function waterValueFromClientX(clientX){
   const row=document.getElementById('waterRow');
   const rect=row.getBoundingClientRect();
   const frac=Math.min(1,Math.max(0,(clientX-rect.left)/rect.width));
-  return Math.round(frac*12*2)/2; // Rasterung in 0.5-Glas-Schritten
+  return Math.round(frac*10*2)/2; // Rasterung in 0.5-Glas-Schritten
 }
 let waterDragging=false;
 function startWaterDrag(e){
@@ -2285,6 +2455,24 @@ function updateAiStatus(){
 }
 
 // ── PERIODE (optional, ein-/ausblendbar) ─────────────────────────────
+function relocateToggleCard(cardId,hidden){
+  const card=document.getElementById(cardId);
+  if(!card) return;
+  const anchorId='anchor-'+cardId;
+  let anchor=document.getElementById(anchorId);
+  if(!anchor){
+    anchor=document.createElement('div');
+    anchor.id=anchorId;
+    anchor.style.display='none';
+    card.parentNode.insertBefore(anchor,card);
+  }
+  const hiddenZone=document.getElementById('hiddenToggleCardsZone');
+  if(hidden){
+    if(hiddenZone&&card.parentNode!==hiddenZone) hiddenZone.appendChild(card);
+  } else if(anchor.parentNode){
+    anchor.parentNode.insertBefore(card,anchor.nextSibling);
+  }
+}
 function applyToggleCardVisibility(storageKey,cardId,toggleId,defaultEnabled){
   const stored=localStorage.getItem(storageKey);
   const enabled=stored!=null?stored==='true':defaultEnabled;
@@ -2292,6 +2480,7 @@ function applyToggleCardVisibility(storageKey,cardId,toggleId,defaultEnabled){
   if(card){ card.classList.toggle('expanded',enabled); card.classList.toggle('collapsed',!enabled); }
   const toggle=document.getElementById(toggleId);
   if(toggle) toggle.checked=enabled;
+  relocateToggleCard(cardId,!enabled);
 }
 function toggleBudenofalkField(checkbox){
   localStorage.setItem('ernaehrung_budenofalk_enabled',checkbox.checked?'true':'false');
@@ -2299,6 +2488,13 @@ function toggleBudenofalkField(checkbox){
 }
 function applyBudenofalkVisibility(){
   applyToggleCardVisibility('ernaehrung_budenofalk_enabled','budenofalkCard','budenofalkToggle',false);
+}
+function toggleBeziehungField(checkbox){
+  localStorage.setItem('ernaehrung_beziehung_enabled',checkbox.checked?'true':'false');
+  applyBeziehungVisibility();
+}
+function applyBeziehungVisibility(){
+  applyToggleCardVisibility('ernaehrung_beziehung_enabled','beziehungCard','beziehungToggle',false);
 }
 function toggleHealthStatsField(checkbox){
   localStorage.setItem('ernaehrung_healthstats_enabled',checkbox.checked?'true':'false');
@@ -2717,7 +2913,7 @@ function loadProfile(){
   loadDrinkGoals();
 }
 function getDrinkGoals(){
-  return db.drinkGoals||{wasser:3,tee:2};
+  return db.drinkGoals||{wasser:2.5,tee:2};
 }
 function loadDrinkGoals(){
   const g=getDrinkGoals();
@@ -2834,6 +3030,43 @@ function resetFoodSuggestions(){
   const box=document.getElementById('foodSuggestions');
   if(box) box.innerHTML='';
 }
+// Stressfaktoren: Freitext mit Vorschlägen aus früher genannten Themen
+function addToStressFactorMemory(name){
+  if(!name) return;
+  const n=name.trim();
+  if(!n) return;
+  if(!db.stressFactorMemory) db.stressFactorMemory=[];
+  if(!db.stressFactorMemory.some(x=>x.toLowerCase()===n.toLowerCase())){
+    db.stressFactorMemory.unshift(n);
+    db.stressFactorMemory=db.stressFactorMemory.slice(0,50);
+    save();
+  }
+}
+function commitStressFactorMemory(el){
+  el.value.split(',').map(p=>p.trim()).filter(Boolean).forEach(addToStressFactorMemory);
+}
+function onStressFactorInput(el){
+  saveDayField('stressFactors',el.value);
+  const box=document.getElementById('stressFactorSuggestions');
+  if(!box) return;
+  const lastPart=el.value.split(',').pop().trim().toLowerCase();
+  if(!lastPart){ box.innerHTML=''; return; }
+  const memory=db.stressFactorMemory||[];
+  const matches=memory.filter(n=>n.toLowerCase().includes(lastPart)&&n.toLowerCase()!==lastPart).slice(0,6);
+  box.innerHTML=matches.map(n=>`<button type="button" class="food-suggestion-chip" onclick="applyStressFactorSuggestion(${JSON.stringify(n)})">${n}</button>`).join('');
+}
+function applyStressFactorSuggestion(name){
+  const el=document.getElementById('stressFactorInput');
+  if(!el) return;
+  let parts=el.value.split(',').map(p=>p.trim()).filter(Boolean);
+  if(!parts.length) parts=[name]; else parts[parts.length-1]=name;
+  el.value=parts.join(', ')+', ';
+  saveDayField('stressFactors',el.value);
+  addToStressFactorMemory(name);
+  const box=document.getElementById('stressFactorSuggestions');
+  if(box) box.innerHTML='';
+  el.focus();
+}
 function renderManualItemsHTML(items){
   if(!items||!items.length) return '';
   return `<div class="food-item-list">${items.map(it=>`<div class="food-item-row"><div class="food-item-name">${it.name}${it.menge?` <span class="food-item-menge">(${it.menge} g)</span>`:''}</div></div>`).join('')}</div>`;
@@ -2881,6 +3114,44 @@ function renderRecipeSuggestions(list){
       ${r.zutaten&&r.zutaten.length?`<div style="font-size:12px;margin-top:5px"><b>Zutaten:</b> ${r.zutaten.join(', ')}</div>`:''}
       ${r.zubereitung?`<div style="font-size:12px;margin-top:5px"><b>Zubereitung:</b> ${r.zubereitung}</div>`:''}
       <div style="font-size:11.5px;color:var(--gray-dark);margin-top:7px">≈ ${r.kalorien||'?'} kcal · ${r.protein_g||0}g P · ${r.kh_g||0}g KH · ${r.fett_g||0}g F</div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+//  EINKAUFSLISTE — KI-Vorschlag basierend auf gut vertragenen Mahlzeiten
+// ══════════════════════════════════════════════════════════════════════════
+async function generateShoppingList(){
+  if(!getAiKey()){ toast('❗ Bitte zuerst API-Key im Profil hinterlegen'); return; }
+  const body=document.getElementById('shoppingListBody');
+  body.style.display='block';
+  body.innerHTML='🤖 Analysiere gut vertragene Mahlzeiten…';
+  const entries=(db.entries||[]).slice(-150);
+  const wellTolerated=entries.filter(e=>e.aiAnalysis&&e.aiAnalysis.warnstufe==='niedrig'&&e.aiAnalysis.gluten_risiko==='niedrig');
+  const foodNames=new Set();
+  wellTolerated.forEach(e=>(e.aiAnalysis.lebensmittel||[]).forEach(it=>{ if(it.name) foodNames.add(it.name); }));
+  const foodList=foodNames.size?[...foodNames]:(db.foodMemory||[]).slice(0,30);
+  if(!foodList.length){
+    body.innerHTML='Noch nicht genug Daten — logge ein paar Mahlzeiten mit Foto-Analyse, dann kann ich dir gezielte Vorschläge machen.';
+    return;
+  }
+  try{
+    const parsed=await callTextAnalysisAPI(
+`Erstelle eine übersichtliche Einkaufsliste für einen Langstrecken-Piloten mit Zöliakie (strikt glutenfrei) und Low-FODMAP-Ernährung, der für einen Bergmarathon trainiert. Grundlage sind diese Lebensmittel, die er nachweislich gut verträgt (aus bisherigen Mahlzeiten-Analysen mit niedrigem Gluten- und FODMAP-Risiko): ${foodList.join(', ')}. Ergänze sinnvoll passende glutenfreie/Low-FODMAP-Grundnahrungsmittel und Sportnahrung dazu, aber der Fokus soll klar auf den bewährten, bereits vertragenen Lebensmitteln liegen — keine riskanten Neuvorschläge. Kategorisiere sinnvoll (z.B. Obst & Gemüse, Getreide & Backwaren, Protein, Milchalternativen, Sportnahrung/Sonstiges).
+Antworte AUSSCHLIESSLICH mit JSON: {"kategorien":[{"name":"...","artikel":["...","..."]}]}`,1500
+    );
+    renderShoppingList(parsed.kategorien||[]);
+  }catch(err){
+    const msg=err&&err.message==='NO_KEY'?'Kein API-Key im Profil hinterlegt':(err.message||'Unbekannter Fehler');
+    body.innerHTML='❌ '+msg.replace(/</g,'&lt;');
+  }
+}
+function renderShoppingList(categories){
+  const body=document.getElementById('shoppingListBody');
+  if(!categories.length){ body.innerHTML='Keine Vorschläge erhalten.'; return; }
+  body.innerHTML=categories.map(cat=>`
+    <div style="margin-top:12px">
+      <div style="font-size:11.5px;font-weight:800;color:var(--purple);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px">${cat.name}</div>
+      ${(cat.artikel||[]).map(item=>`<label class="shopping-item"><input type="checkbox"><span>${item}</span></label>`).join('')}
     </div>`).join('');
 }
 
